@@ -6,8 +6,50 @@ let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
 
 const META_MENSAL = 1500;
 
+// ===== ABAS =====
+
+function mostrarAba(aba) {
+
+    document.getElementById(
+        "abaResumo"
+    ).style.display = "none";
+
+    document.getElementById(
+        "abaGastos"
+    ).style.display = "none";
+
+    document.getElementById(
+        "abaHistorico"
+    ).style.display = "none";
+
+    if (aba === "resumo") {
+
+        document.getElementById(
+            "abaResumo"
+        ).style.display = "block";
+    }
+
+    if (aba === "gastos") {
+
+        document.getElementById(
+            "abaGastos"
+        ).style.display = "block";
+    }
+
+    if (aba === "historico") {
+
+        document.getElementById(
+            "abaHistorico"
+        ).style.display = "block";
+    }
+}
+
+mostrarAba("resumo");
+
 atualizarTela();
 atualizarListaGastos();
+
+// ===== AMORTIZAÇÃO =====
 
 function amortizar() {
 
@@ -40,9 +82,11 @@ function amortizar() {
     document.getElementById("amortizacao").value = "";
 }
 
+// ===== RESET =====
+
 function reiniciarFinanciamento() {
 
-    if (!confirm("Deseja realmente apagar todos os dados?")) {
+    if (!confirm("Deseja apagar todos os dados?")) {
         return;
     }
 
@@ -55,10 +99,9 @@ function reiniciarFinanciamento() {
 
     atualizarTela();
     atualizarListaGastos();
-
-    document.getElementById("saldo").value = "";
-    document.getElementById("amortizacao").value = "";
 }
+
+// ===== GASTOS =====
 
 function registrarGasto() {
 
@@ -85,12 +128,16 @@ function registrarGasto() {
         JSON.stringify(gastos)
     );
 
-    atualizarListaGastos();
     atualizarTela();
+    atualizarListaGastos();
 
-    document.getElementById("categoria").value = "";
-    document.getElementById("valorGasto").value = "";
-    document.getElementById("observacao").value = "";
+    document.getElementById(
+        "valorGasto"
+    ).value = "";
+
+    document.getElementById(
+        "observacao"
+    ).value = "";
 }
 
 function excluirGasto(indice) {
@@ -102,9 +149,11 @@ function excluirGasto(indice) {
         JSON.stringify(gastos)
     );
 
-    atualizarListaGastos();
     atualizarTela();
+    atualizarListaGastos();
 }
+
+// ===== HISTÓRICO =====
 
 function atualizarListaGastos() {
 
@@ -112,15 +161,10 @@ function atualizarListaGastos() {
         document.getElementById("listaGastos");
 
     const titulo =
-        document.getElementById(
-            "tituloHistorico"
-        );
+        document.getElementById("tituloHistorico");
 
-    if (titulo) {
-
-        titulo.innerHTML =
-            `Histórico de Gastos (${gastos.length})`;
-    }
+    titulo.innerHTML =
+        `Histórico de Gastos (${gastos.length})`;
 
     if (gastos.length === 0) {
 
@@ -135,32 +179,28 @@ function atualizarListaGastos() {
     gastos.forEach((gasto, indice) => {
 
         lista.innerHTML += `
-        <div style="
-            border:1px solid #ddd;
-            padding:10px;
-            margin-bottom:10px;
-            border-radius:8px;
-        ">
+        <div class="card">
+
             <strong>${gasto.categoria}</strong><br>
 
-            R$ ${gasto.valor.toLocaleString(
-                "pt-BR",
-                {
-                    minimumFractionDigits:2
-                }
-            )}<br>
+            R$ ${gasto.valor.toFixed(2)}<br>
 
             ${gasto.observacao}<br>
 
-            <small>${gasto.data}</small><br><br>
+            <small>${gasto.data}</small>
+
+            <br><br>
 
             <button onclick="excluirGasto(${indice})">
                 Excluir
             </button>
+
         </div>
         `;
     });
 }
+
+// ===== RESUMO =====
 
 function atualizarTela() {
 
@@ -186,23 +226,23 @@ function atualizarTela() {
             }
         );
 
-    let percentual = 0;
+    let percentualQuitado = 0;
 
     if (saldoInicial > 0) {
 
-        percentual =
+        percentualQuitado =
             (totalAmortizado / saldoInicial) * 100;
     }
 
     document.getElementById(
         "percentualQuitado"
     ).innerHTML =
-        percentual.toFixed(2) + "%";
+        percentualQuitado.toFixed(2) + "%";
 
     document.getElementById(
         "barraQuitacao"
     ).value =
-        percentual;
+        percentualQuitado;
 
     let totalGastos = gastos.reduce(
         (soma, gasto) =>
