@@ -4,6 +4,8 @@ let saldoInicial = Number(localStorage.getItem("saldoInicial")) || 0;
 
 let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
 
+const META_MENSAL = 1500;
+
 atualizarTela();
 atualizarListaGastos();
 
@@ -108,7 +110,27 @@ function atualizarListaGastos() {
     const lista =
         document.getElementById("listaGastos");
 
-    if (gastos.length === 0) {
+    const filtro =
+        document.getElementById("filtroCategoria");
+
+    let categoriaSelecionada = "Todos";
+
+    if (filtro) {
+        categoriaSelecionada = filtro.value;
+    }
+
+    let gastosFiltrados = gastos;
+
+    if (categoriaSelecionada !== "Todos") {
+
+        gastosFiltrados =
+            gastos.filter(
+                gasto =>
+                gasto.categoria === categoriaSelecionada
+            );
+    }
+
+    if (gastosFiltrados.length === 0) {
 
         lista.innerHTML =
             "Nenhum gasto registrado.";
@@ -118,7 +140,7 @@ function atualizarListaGastos() {
 
     lista.innerHTML = "";
 
-    gastos.forEach((gasto, indice) => {
+    gastosFiltrados.forEach((gasto, indice) => {
 
         lista.innerHTML += `
         <div style="
@@ -194,34 +216,77 @@ function atualizarTela() {
         0
     );
 
-    const elementoTotalGastos =
-        document.getElementById("totalGastos");
+    document.getElementById(
+        "totalGastos"
+    ).innerHTML =
+        totalGastos.toLocaleString(
+            "pt-BR",
+            {
+                style:"currency",
+                currency:"BRL"
+            }
+        );
 
-    if (elementoTotalGastos) {
+    document.getElementById(
+        "economiaLiquida"
+    ).innerHTML =
+        (totalAmortizado - totalGastos)
+        .toLocaleString(
+            "pt-BR",
+            {
+                style:"currency",
+                currency:"BRL"
+            }
+        );
 
-        elementoTotalGastos.innerHTML =
-            totalGastos.toLocaleString(
-                "pt-BR",
-                {
-                    style:"currency",
-                    currency:"BRL"
-                }
-            );
-    }
+    document.getElementById(
+        "metaMensal"
+    ).innerHTML =
+        META_MENSAL.toLocaleString(
+            "pt-BR",
+            {
+                style:"currency",
+                currency:"BRL"
+            }
+        );
 
-    const economiaLiquida =
-        document.getElementById("economiaLiquida");
+    const restanteMeta =
+        META_MENSAL - totalGastos;
 
-    if (economiaLiquida) {
+    document.getElementById(
+        "restanteMeta"
+    ).innerHTML =
+        restanteMeta.toLocaleString(
+            "pt-BR",
+            {
+                style:"currency",
+                currency:"BRL"
+            }
+        );
 
-        economiaLiquida.innerHTML =
-            (totalAmortizado - totalGastos)
-            .toLocaleString(
-                "pt-BR",
-                {
-                    style:"currency",
-                    currency:"BRL"
-                }
-            );
-    }
+    const percentualMeta =
+        (totalGastos / META_MENSAL) * 100;
+
+    document.getElementById(
+        "percentualMeta"
+    ).innerHTML =
+        percentualMeta.toFixed(1) + "%";
+
+    document.getElementById(
+        "barraMeta"
+    ).value =
+        percentualMeta;
 }
+
+document.addEventListener(
+    "change",
+    function(event) {
+
+        if (
+            event.target.id ===
+            "filtroCategoria"
+        ) {
+            atualizarListaGastos();
+        }
+    }
+);
