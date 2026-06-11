@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amortizar App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🏠 Amortizar App</h1>
+
+  <div class="card">
+    <h2>Patrimônio</h2>
+    <p>Previdência: R$ 17.134,62</p>
+  </div>
+
+  <div class="card">
+    <h2>Novo Gasto</h2>
+
+    <input id="categoria" placeholder="Categoria">
+
+    <input id="valor" type="number" placeholder="Valor">
+
+    <button onclick="salvarGasto()">
+      Salvar
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>Últimos Gastos</h2>
+    <ul id="lista"></ul>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
