@@ -20,6 +20,7 @@ function amortizar() {
     if (!valorAmortizacao) return;
 
     if (saldo === 0 && saldoInformado > 0) {
+
         saldo = saldoInformado;
         saldoInicial = saldoInformado;
     }
@@ -110,27 +111,18 @@ function atualizarListaGastos() {
     const lista =
         document.getElementById("listaGastos");
 
-    const filtro =
-        document.getElementById("filtroCategoria");
+    const titulo =
+        document.getElementById(
+            "tituloHistorico"
+        );
 
-    let categoriaSelecionada = "Todos";
+    if (titulo) {
 
-    if (filtro) {
-        categoriaSelecionada = filtro.value;
+        titulo.innerHTML =
+            `Histórico de Gastos (${gastos.length})`;
     }
 
-    let gastosFiltrados = gastos;
-
-    if (categoriaSelecionada !== "Todos") {
-
-        gastosFiltrados =
-            gastos.filter(
-                gasto =>
-                gasto.categoria === categoriaSelecionada
-            );
-    }
-
-    if (gastosFiltrados.length === 0) {
+    if (gastos.length === 0) {
 
         lista.innerHTML =
             "Nenhum gasto registrado.";
@@ -140,7 +132,7 @@ function atualizarListaGastos() {
 
     lista.innerHTML = "";
 
-    gastosFiltrados.forEach((gasto, indice) => {
+    gastos.forEach((gasto, indice) => {
 
         lista.innerHTML += `
         <div style="
@@ -209,10 +201,12 @@ function atualizarTela() {
 
     document.getElementById(
         "barraQuitacao"
-    ).value = percentual;
+    ).value =
+        percentual;
 
     let totalGastos = gastos.reduce(
-        (soma, gasto) => soma + gasto.valor,
+        (soma, gasto) =>
+            soma + gasto.valor,
         0
     );
 
@@ -275,18 +269,5 @@ function atualizarTela() {
     document.getElementById(
         "barraMeta"
     ).value =
-        percentualMeta;
+        Math.min(percentualMeta, 100);
 }
-
-document.addEventListener(
-    "change",
-    function(event) {
-
-        if (
-            event.target.id ===
-            "filtroCategoria"
-        ) {
-            atualizarListaGastos();
-        }
-    }
-);
