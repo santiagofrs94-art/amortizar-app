@@ -16,13 +16,16 @@
 <h1>🏠 Amortizar App</h1>
 
 <div class="card">
+
 <h2>Dados do Financiamento</h2>
 
-<input id="saldo"
+<input
+id="saldo"
 type="number"
 placeholder="Saldo Devedor Atual">
 
-<input id="amortizacao"
+<input
+id="amortizacao"
 type="number"
 placeholder="Valor da Amortização">
 
@@ -33,9 +36,11 @@ Registrar Amortização
 <button onclick="reiniciarFinanciamento()">
 🔄 Reiniciar Financiamento
 </button>
+
 </div>
 
 <div class="card">
+
 <h2>Resumo</h2>
 
 <p>Saldo Atual:</p>
@@ -43,6 +48,12 @@ Registrar Amortização
 
 <p>Total Amortizado:</p>
 <h3 id="totalAmortizado">R$ 0,00</h3>
+
+<p>Total de Gastos:</p>
+<h3 id="totalGastos">R$ 0,00</h3>
+
+<p>Economia Líquida:</p>
+<h3 id="economiaLiquida">R$ 0,00</h3>
 
 <p>Percentual Quitado:</p>
 <h3 id="percentualQuitado">0%</h3>
@@ -53,9 +64,11 @@ value="0"
 max="100"
 style="width:100%;height:25px;">
 </progress>
+
 </div>
 
 <div class="card">
+
 <h2>Registrar Gasto</h2>
 
 <input
@@ -76,14 +89,17 @@ placeholder="Observação">
 <button onclick="registrarGasto()">
 Salvar Gasto
 </button>
+
 </div>
 
 <div class="card">
+
 <h2>Histórico de Gastos</h2>
 
 <div id="listaGastos">
 Nenhum gasto registrado.
 </div>
+
 </div>
 
 </div>
