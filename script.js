@@ -147,9 +147,10 @@ function excluirGasto(indice) {
         "gastos",
         JSON.stringify(gastos)
     );
-
-    atualizarTela();
-    atualizarListaGastos();
+atualizarTela();
+atualizarListaGastos();
+atualizarGrafico();
+    
 }
 
 // ===== HISTÓRICO =====
@@ -309,4 +310,74 @@ function atualizarTela() {
         "barraMeta"
     ).value =
         Math.min(percentualMeta, 100);
+    let grafico = null;
+
+function atualizarGrafico() {
+
+    const canvas =
+        document.getElementById(
+            "graficoGastos"
+        );
+
+    if (!canvas) return;
+
+    let acumulado = 0;
+
+    const labels = [];
+    const valores = [];
+
+    gastos.forEach((gasto) => {
+
+        acumulado += gasto.valor;
+
+        labels.push(
+            gasto.data
+        );
+
+        valores.push(
+            acumulado
+        );
+    });
+
+    if (grafico) {
+
+        grafico.destroy();
+    }
+
+    grafico = new Chart(
+        canvas,
+        {
+            type: "line",
+
+            data: {
+
+                labels,
+
+                datasets: [
+                    {
+                        label:
+                        "Gastos Acumulados",
+
+                        data: valores,
+
+                        borderWidth: 3,
+
+                        tension: 0.35,
+
+                        fill: true
+                    }
+                ]
+            },
+
+            options: {
+                responsive: true
+            }
+        }
+    );
+}
+
+window.onload = () => {
+
+    atualizarGrafico();
+};
 }
