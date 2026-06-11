@@ -35,7 +35,16 @@ function atualizarTela() {
             style: "currency",
             currency: "BRL"
         });
+const saldoInicial = 150295;
 
+const percentual =
+((totalAmortizado / saldoInicial) * 100).toFixed(2);
+
+document.getElementById("percentualQuitado").innerHTML =
+percentual + "%";
+
+document.getElementById("barraQuitacao").value =
+percentual;
     document.getElementById("totalAmortizado").innerHTML =
         totalAmortizado.toLocaleString("pt-BR", {
             style: "currency",
