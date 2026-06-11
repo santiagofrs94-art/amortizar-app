@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,26 +18,44 @@
 <div class="card">
 <h2>Dados do Financiamento</h2>
 
-<input id="saldo" type="number" placeholder="Saldo Devedor Atual">
+<input id="saldo"
+type="number"
+placeholder="Saldo Devedor Atual">
 
-<input id="amortizacao" type="number" placeholder="Valor da Amortização">
+<input id="amortizacao"
+type="number"
+placeholder="Valor da Amortização">
 
 <button onclick="amortizar()">
 Registrar Amortização
 </button>
-  </button>
 
 <button onclick="reiniciarFinanciamento()">
 🔄 Reiniciar Financiamento
 </button>
-
-</div>
 </div>
 
 <div class="card">
 <h2>Resumo</h2>
-<div class="card">
 
+<p>Saldo Atual:</p>
+<h3 id="saldoAtual">R$ 0,00</h3>
+
+<p>Total Amortizado:</p>
+<h3 id="totalAmortizado">R$ 0,00</h3>
+
+<p>Percentual Quitado:</p>
+<h3 id="percentualQuitado">0%</h3>
+
+<progress
+id="barraQuitacao"
+value="0"
+max="100"
+style="width:100%;height:25px;">
+</progress>
+</div>
+
+<div class="card">
 <h2>Registrar Gasto</h2>
 
 <input
@@ -57,31 +76,14 @@ placeholder="Observação">
 <button onclick="registrarGasto()">
 Salvar Gasto
 </button>
-
 </div>
 
 <div class="card">
-
 <h2>Histórico de Gastos</h2>
 
-<div id="listaGastos"></div>
-
-<p>Saldo Atual:</p>
-<h3 id="saldoAtual">R$ 0,00</h3>
-
-<p>Total Amortizado:</p>
-<h3 id="totalAmortizado">R$ 0,00</h3>
-
-<p>Percentual Quitado:</p>
-<h3 id="percentualQuitado">0%</h3>
-
-<progress
-id="barraQuitacao"
-value="0"
-max="100"
-style="width:100%;height:25px;">
-</progress>
-
+<div id="listaGastos">
+Nenhum gasto registrado.
+</div>
 </div>
 
 </div>
