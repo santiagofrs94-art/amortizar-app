@@ -15,12 +15,17 @@ function amortizar() {
     const valorAmortizacao =
         Number(document.getElementById("amortizacao").value);
 
+    if (!valorAmortizacao) return;
+
     if (saldo === 0 && saldoInformado > 0) {
         saldo = saldoInformado;
         saldoInicial = saldoInformado;
     }
 
     saldo -= valorAmortizacao;
+
+    if (saldo < 0) saldo = 0;
+
     totalAmortizado += valorAmortizacao;
 
     localStorage.setItem("saldo", saldo);
@@ -33,6 +38,10 @@ function amortizar() {
 }
 
 function reiniciarFinanciamento() {
+
+    if (!confirm("Deseja realmente apagar todos os dados?")) {
+        return;
+    }
 
     localStorage.clear();
 
@@ -59,9 +68,7 @@ function registrarGasto() {
     const observacao =
         document.getElementById("observacao").value;
 
-    if (!categoria || !valor) {
-        return;
-    }
+    if (!categoria || !valor) return;
 
     gastos.push({
         categoria,
@@ -76,6 +83,7 @@ function registrarGasto() {
     );
 
     atualizarListaGastos();
+    atualizarTela();
 
     document.getElementById("categoria").value = "";
     document.getElementById("valorGasto").value = "";
@@ -92,6 +100,7 @@ function excluirGasto(indice) {
     );
 
     atualizarListaGastos();
+    atualizarTela();
 }
 
 function atualizarListaGastos() {
@@ -131,9 +140,8 @@ function atualizarListaGastos() {
 
             <small>${gasto.data}</small><br><br>
 
-            <button
-            onclick="excluirGasto(${indice})">
-            Excluir
+            <button onclick="excluirGasto(${indice})">
+                Excluir
             </button>
         </div>
         `;
@@ -180,4 +188,40 @@ function atualizarTela() {
     document.getElementById(
         "barraQuitacao"
     ).value = percentual;
+
+    let totalGastos = gastos.reduce(
+        (soma, gasto) => soma + gasto.valor,
+        0
+    );
+
+    const elementoTotalGastos =
+        document.getElementById("totalGastos");
+
+    if (elementoTotalGastos) {
+
+        elementoTotalGastos.innerHTML =
+            totalGastos.toLocaleString(
+                "pt-BR",
+                {
+                    style:"currency",
+                    currency:"BRL"
+                }
+            );
+    }
+
+    const economiaLiquida =
+        document.getElementById("economiaLiquida");
+
+    if (economiaLiquida) {
+
+        economiaLiquida.innerHTML =
+            (totalAmortizado - totalGastos)
+            .toLocaleString(
+                "pt-BR",
+                {
+                    style:"currency",
+                    currency:"BRL"
+                }
+            );
+    }
 }
