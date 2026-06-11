@@ -1,3 +1,5 @@
+localStorage.removeItem("saldo");
+localStorage.removeItem("totalAmortizado");
 let saldo = Number(localStorage.getItem("saldo")) || 0;
 let totalAmortizado = Number(localStorage.getItem("totalAmortizado")) || 0;
 
