@@ -2,10 +2,18 @@ body {
   font-family: Arial, sans-serif;
   background: #f5f5f5;
   padding: 20px;
+  margin: 0;
+  padding-bottom: 90px;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .card {
@@ -13,14 +21,17 @@ h1 {
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
 
-input {
+input,
+select {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 10px;
   box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
 
 button {
@@ -30,8 +41,61 @@ button {
   color: white;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 button:hover {
   opacity: 0.9;
+}
+
+progress {
+  width: 100%;
+  height: 25px;
+}
+
+.menuInferior {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+
+  background: white;
+
+  box-shadow:
+    0 -2px 10px rgba(0,0,0,0.10);
+
+  z-index: 999;
+}
+
+.menuInferior button {
+
+  flex: 1;
+
+  border-radius: 0;
+
+  background: white;
+
+  color: #333;
+
+  padding: 10px 0;
+
+  font-size: 14px;
+
+  border-top: 1px solid #ddd;
+}
+
+.menuInferior button:hover {
+  background: #f0f0f0;
+}
+
+#saldoAtual,
+#totalAmortizado,
+#totalGastos,
+#economiaLiquida,
+#percentualQuitado,
+#metaMensal,
+#restanteMeta {
+  margin-top: 0;
 }
