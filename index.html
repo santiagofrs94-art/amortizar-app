@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Controle de Gastos</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amortizar App</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>Controle de Gastos</h1>
+<div class="container">
+
+<h1>🏠 Amortizar App</h1>
 
 <div class="card">
-    <input id="categoria" placeholder="Categoria">
-    <input id="valor" type="number" placeholder="Valor">
-    <input id="observacao" placeholder="Observação">
+<h2>Dados do Financiamento</h2>
 
-    <button onclick="salvarGasto()">
-        Salvar Gasto
-    </button>
+<input id="saldo" type="number" placeholder="Saldo Devedor Atual">
+
+<input id="amortizacao" type="number" placeholder="Valor da Amortização">
+
+<button onclick="amortizar()">
+Registrar Amortização
+</button>
 </div>
 
-<div id="lista"></div>
+<div class="card">
+<h2>Resumo</h2>
+
+<p>Saldo Atual:</p>
+<h3 id="saldoAtual">R$ 0,00</h3>
+
+<p>Total Amortizado:</p>
+<h3 id="totalAmortizado">R$ 0,00</h3>
+
+</div>
+
+</div>
 
 <script src="script.js"></script>
 
