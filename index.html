@@ -65,16 +65,49 @@ max="100"
 style="width:100%;height:25px;">
 </progress>
 
+<br><br>
+
+<p>Meta Mensal:</p>
+<h3 id="metaMensal">R$ 1.500,00</h3>
+
+<p>Restante da Meta:</p>
+<h3 id="restanteMeta">R$ 1.500,00</h3>
+
+<progress
+id="barraMeta"
+value="0"
+max="100"
+style="width:100%;height:25px;">
+</progress>
+
+<p id="percentualMeta">0%</p>
+
 </div>
 
 <div class="card">
 
 <h2>Registrar Gasto</h2>
 
-<input
-id="categoria"
-type="text"
-placeholder="Categoria">
+<select id="categoria">
+
+<option value="">Selecione uma categoria</option>
+
+<option>🍔 Alimentação</option>
+<option>🛒 Mercado</option>
+<option>🍺 Lazer</option>
+<option>👕 Roupas</option>
+<option>💊 Saúde</option>
+<option>🚕 Transporte</option>
+<option>🏠 Casa</option>
+<option>🐶 Pets</option>
+<option>🎁 Presentes</option>
+<option>✈️ Viagem</option>
+<option>📚 Educação</option>
+<option>📱 Assinaturas</option>
+<option>📦 Compras</option>
+<option>📋 Outros</option>
+
+</select>
 
 <input
 id="valorGasto"
@@ -89,6 +122,33 @@ placeholder="Observação">
 <button onclick="registrarGasto()">
 Salvar Gasto
 </button>
+
+</div>
+
+<div class="card">
+
+<h2>Filtrar Gastos</h2>
+
+<select id="filtroCategoria">
+
+<option value="Todos">Todos</option>
+
+<option>🍔 Alimentação</option>
+<option>🛒 Mercado</option>
+<option>🍺 Lazer</option>
+<option>👕 Roupas</option>
+<option>💊 Saúde</option>
+<option>🚕 Transporte</option>
+<option>🏠 Casa</option>
+<option>🐶 Pets</option>
+<option>🎁 Presentes</option>
+<option>✈️ Viagem</option>
+<option>📚 Educação</option>
+<option>📱 Assinaturas</option>
+<option>📦 Compras</option>
+<option>📋 Outros</option>
+
+</select>
 
 </div>
 
