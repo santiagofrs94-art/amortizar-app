@@ -45,10 +45,9 @@ function mostrarAba(aba) {
 }
 
 mostrarAba("resumo");
-
 atualizarTela();
 atualizarListaGastos();
-
+atualizarGrafico();
 // ===== AMORTIZAÇÃO =====
 
 function amortizar() {
@@ -98,7 +97,8 @@ function reiniciarFinanciamento() {
     gastos = [];
 
     atualizarTela();
-    atualizarListaGastos();
+atualizarListaGastos();
+atualizarGrafico();
 }
 
 // ===== GASTOS =====
@@ -127,10 +127,9 @@ function registrarGasto() {
         "gastos",
         JSON.stringify(gastos)
     );
-
-    atualizarTela();
-    atualizarListaGastos();
-
+atualizarTela();
+atualizarListaGastos();
+atualizarGrafico();
     document.getElementById(
         "valorGasto"
     ).value = "";
