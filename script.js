@@ -26,7 +26,7 @@ function amortizar() {
 
     if (saldo < 0) saldo = 0;
 
-    totalAmortizado += valorAmortizacao;
+    totalAmortizado -= valorAmortizacao;
 
     localStorage.setItem("saldo", saldo);
     localStorage.setItem("saldoInicial", saldoInicial);
