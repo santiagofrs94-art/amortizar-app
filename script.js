@@ -43,3 +43,16 @@ function atualizarTela() {
             currency: "BRL"
         });
 }
+function reiniciarFinanciamento() {
+
+    localStorage.removeItem("saldo");
+    localStorage.removeItem("totalAmortizado");
+
+    saldo = 0;
+    totalAmortizado = 0;
+
+    atualizarTela();
+
+    document.getElementById("saldo").value = "";
+    document.getElementById("amortizacao").value = "";
+}
