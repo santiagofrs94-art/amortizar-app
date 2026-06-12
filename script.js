@@ -422,9 +422,12 @@ function atualizarGrafico() {
 
 window.onload = () => {
 
+    atualizarTela();
+    atualizarListaGastos();
     atualizarGrafico();
+    atualizarHistoricoAmortizacoes();
+
 };
-}
 function editarGasto(indice) {
 
     const novoValor = prompt(
