@@ -191,10 +191,13 @@ function atualizarListaGastos() {
 
             <br><br>
 
-            <button onclick="excluirGasto(${indice})">
-                Excluir
-            </button>
+            <button onclick="editarGasto(${indice})">
+    ✏️ Editar
+</button>
 
+<button onclick="excluirGasto(${indice})">
+    🗑️ Excluir
+</button>
         </div>
         `;
     });
