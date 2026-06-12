@@ -127,18 +127,38 @@ function registrarGasto() {
         "gastos",
         JSON.stringify(gastos)
     );
+
 atualizarTela();
 atualizarListaGastos();
 atualizarGrafico();
-    document.getElementById(
-        "valorGasto"
-    ).value = "";
 
+const mensagem =
     document.getElementById(
-        "observacao"
-    ).value = "";
+        "mensagemSucesso"
+    );
+
+mensagem.style.display =
+    "block";
+
+setTimeout(() => {
+
+    mensagem.style.display =
+        "none";
+
+}, 2000);
+
+document.getElementById(
+    "categoria"
+).selectedIndex = 0;
+
+document.getElementById(
+    "valorGasto"
+).value = "";
+
+document.getElementById(
+    "observacao"
+).value = "";
 }
-
 function excluirGasto(indice) {
 
     gastos.splice(indice, 1);
