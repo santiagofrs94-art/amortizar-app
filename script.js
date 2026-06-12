@@ -384,3 +384,44 @@ window.onload = () => {
     atualizarGrafico();
 };
 }
+function editarGasto(indice) {
+
+    const novoValor = prompt(
+        "Novo valor:",
+        gastos[indice].valor
+    );
+
+    if (novoValor === null) return;
+
+    const novaObservacao = prompt(
+        "Nova observação:",
+        gastos[indice].observacao
+    );
+
+    if (novaObservacao === null) return;
+
+    const novaData = prompt(
+        "Nova data (dd/mm/aaaa):",
+        gastos[indice].data
+    );
+
+    if (novaData === null) return;
+
+    gastos[indice].valor =
+        Number(novoValor);
+
+    gastos[indice].observacao =
+        novaObservacao;
+
+    gastos[indice].data =
+        novaData;
+
+    localStorage.setItem(
+        "gastos",
+        JSON.stringify(gastos)
+    );
+
+    atualizarTela();
+    atualizarListaGastos();
+    atualizarGrafico();
+}
