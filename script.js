@@ -354,7 +354,9 @@ function atualizarTela() {
         "barraMeta"
     ).value =
         Math.min(percentualMeta, 100);
+}
     let grafico = null;
+
 
 function atualizarGrafico() {
 
