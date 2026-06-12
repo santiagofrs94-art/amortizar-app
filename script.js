@@ -421,12 +421,13 @@ function atualizarGrafico() {
 }
 
 window.onload = () => {
-
     atualizarTela();
     atualizarListaGastos();
     atualizarGrafico();
-    atualizarHistoricoAmortizacoes();
 
+    if (typeof atualizarHistoricoAmortizacoes === "function") {
+        atualizarHistoricoAmortizacoes();
+    }
 };
 function editarGasto(indice) {
 
