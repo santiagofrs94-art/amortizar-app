@@ -87,7 +87,7 @@ localStorage.setItem(
     JSON.stringify(amortizacoes)
 );
     atualizarTela();
-
+document.getElementById("saldo").value = saldo;
     document.getElementById("amortizacao").value = "";
 }
 
@@ -105,7 +105,7 @@ function reiniciarFinanciamento() {
     saldoInicial = 0;
     totalAmortizado = 0;
     gastos = [];
-
+amortizacoes = [];
     atualizarTela();
 atualizarListaGastos();
 atualizarGrafico();
