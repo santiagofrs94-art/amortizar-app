@@ -176,8 +176,11 @@ function atualizarListaGastos() {
 
     lista.innerHTML = "";
 
-    gastos.forEach((gasto, indice) => {
-
+    
+[...gastos]
+.reverse()
+.forEach((gasto, indice) => {
+    
         lista.innerHTML += `
         <div class="card">
 
