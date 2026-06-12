@@ -81,8 +81,9 @@ amortizacoes.push({
     data: new Date().toLocaleDateString("pt-BR")
 });
     localStorage.setItem("saldo", saldo);
-    localStorage.setItem("saldoInicial", saldoInicial);
-    localStorage.setItem("totalAmortizado", totalAmortizado);
+localStorage.setItem("saldoInicial", saldoInicial);
+localStorage.setItem("totalAmortizado", totalAmortizado);
+
 localStorage.setItem(
     "amortizacoes",
     JSON.stringify(amortizacoes)
@@ -112,6 +113,7 @@ amortizacoes = [];
     atualizarTela();
 atualizarListaGastos()
 atualizarGrafico();
+    atualizarHistoricoAmortizacoes();
 }
 
 // ===== GASTOS =====
