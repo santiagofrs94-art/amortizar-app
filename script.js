@@ -489,17 +489,60 @@ function atualizarHistoricoAmortizacoes() {
         .forEach(item => {
 
             historico.innerHTML += `
-                <div style="margin-bottom:10px;padding:8px;border:1px solid #ddd;border-radius:8px;">
-                    <strong>Amortização:</strong>
-                    R$ ${item.valor.toFixed(2)}
-                    <br>
+<div style="margin-bottom:10px;padding:8px;border:1px solid #ddd;border-radius:8px;">
+    <strong>Amortização:</strong>
+    R$ ${item.valor.toFixed(2)}
+    <br>
 
-                    <strong>Saldo restante:</strong>
-                    R$ ${item.saldoRestante.toFixed(2)}
-                    <br>
+    <strong>Saldo restante:</strong>
+    R$ ${item.saldoRestante.toFixed(2)}
+    <br>
 
-                    <small>${item.data}</small>
-                </div>
-            `;
+    <small>${item.data}</small>
+
+    <br><br>
+
+    <button onclick="editarAmortizacao(${amortizacoes.indexOf(item)})">
+        ✏️ Editar
+    </button>
+
+    <button onclick="excluirAmortizacao(${amortizacoes.indexOf(item)})">
+        🗑️ Excluir
+    </button>
+</div>
+`;
         });
+}
+
+
+function excluirAmortizacao(indice) {
+
+    amortizacoes.splice(indice, 1);
+
+    localStorage.setItem(
+        "amortizacoes",
+        JSON.stringify(amortizacoes)
+    );
+
+    atualizarHistoricoAmortizacoes();
+}
+
+function editarAmortizacao(indice) {
+
+    const novoValor = prompt(
+        "Novo valor da amortização:",
+        amortizacoes[indice].valor
+    );
+
+    if (novoValor === null) return;
+
+    amortizacoes[indice].valor =
+        Number(novoValor);
+
+    localStorage.setItem(
+        "amortizacoes",
+        JSON.stringify(amortizacoes)
+    );
+
+    atualizarHistoricoAmortizacoes();
 }
