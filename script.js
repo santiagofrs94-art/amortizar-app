@@ -113,8 +113,7 @@ function registrarGasto() {
 
     const observacao =
         document.getElementById("observacao").value;
-
-    alert("LIMPEI TUDO");
+    
 
     if (!categoria || !valor) return;
 
@@ -124,14 +123,6 @@ function registrarGasto() {
         observacao,
         data: new Date().toLocaleDateString("pt-BR")
     });
-
-    gastos
-.map((gasto, indice) => ({
-    gasto,
-    indice
-}))
-.reverse()
-.forEach(({ gasto, indice }) => {
     
     localStorage.setItem(
         "gastos",
