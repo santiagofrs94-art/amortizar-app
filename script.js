@@ -51,6 +51,7 @@ mostrarAba("resumo");
 atualizarTela();
 atualizarListaGastos();
 atualizarGrafico();
+atualizarHistoricoAmortizacoes();
 // ===== AMORTIZAÇÃO =====
 
 function amortizar() {
@@ -87,6 +88,7 @@ localStorage.setItem(
     JSON.stringify(amortizacoes)
 );
     atualizarTela();
+   atualizarHistoricoAmortizacoes(); 
 document.getElementById("saldo").value = saldo;
     document.getElementById("amortizacao").value = "";
 }
@@ -106,8 +108,9 @@ function reiniciarFinanciamento() {
     totalAmortizado = 0;
     gastos = [];
 amortizacoes = [];
+    localStorage.removeItem("amortizacoes");
     atualizarTela();
-atualizarListaGastos();
+atualizarListaGastos()
 atualizarGrafico();
 }
 
@@ -460,4 +463,41 @@ function editarGasto(indice) {
     atualizarTela();
     atualizarListaGastos();
     atualizarGrafico();
+}
+function atualizarHistoricoAmortizacoes() {
+
+    const historico =
+        document.getElementById("historicoAmortizacoes");
+
+    if (!historico) return;
+
+    if (amortizacoes.length === 0) {
+
+        historico.innerHTML =
+            "Nenhuma amortização registrada.";
+
+        return;
+    }
+
+    historico.innerHTML = "";
+
+    amortizacoes
+        .slice()
+        .reverse()
+        .forEach(item => {
+
+            historico.innerHTML += `
+                <div style="margin-bottom:10px;padding:8px;border:1px solid #ddd;border-radius:8px;">
+                    <strong>Amortização:</strong>
+                    R$ ${item.valor.toFixed(2)}
+                    <br>
+
+                    <strong>Saldo restante:</strong>
+                    R$ ${item.saldoRestante.toFixed(2)}
+                    <br>
+
+                    <small>${item.data}</small>
+                </div>
+            `;
+        });
 }
