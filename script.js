@@ -3,7 +3,10 @@ let totalAmortizado = Number(localStorage.getItem("totalAmortizado")) || 0;
 let saldoInicial = Number(localStorage.getItem("saldoInicial")) || 0;
 
 let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
-
+let amortizacoes =
+JSON.parse(
+localStorage.getItem("amortizacoes")
+) || [];
 const META_MENSAL = 1500;
 
 // ===== ABAS =====
@@ -71,11 +74,18 @@ function amortizar() {
     if (saldo < 0) saldo = 0;
 
     totalAmortizado += valorAmortizacao;
-
+amortizacoes.push({
+    valor: valorAmortizacao,
+    saldoRestante: saldo,
+    data: new Date().toLocaleDateString("pt-BR")
+});
     localStorage.setItem("saldo", saldo);
     localStorage.setItem("saldoInicial", saldoInicial);
     localStorage.setItem("totalAmortizado", totalAmortizado);
-
+localStorage.setItem(
+    "amortizacoes",
+    JSON.stringify(amortizacoes)
+);
     atualizarTela();
 
     document.getElementById("amortizacao").value = "";
