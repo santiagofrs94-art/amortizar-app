@@ -380,4 +380,4 @@ window.onload = () => {
 
     atualizarGrafico();
 };
-
+}
