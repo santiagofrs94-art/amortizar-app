@@ -204,10 +204,62 @@ function atualizarListaGastos() {
 
     const titulo =
         document.getElementById("tituloHistorico");
-
+const ranking =
+    document.getElementById(
+        "rankingGastos"
+    );
     titulo.innerHTML =
         `Histórico de Gastos (${gastos.length})`;
+const categorias = {};
 
+gastos.forEach(gasto => {
+
+    if (!categorias[gasto.categoria]) {
+
+        categorias[gasto.categoria] = 0;
+    }
+
+    categorias[gasto.categoria] +=
+        gasto.valor;
+});
+
+const rankingOrdenado =
+    Object.entries(categorias)
+    .sort(
+        (a, b) =>
+            b[1] - a[1]
+    );
+
+ranking.innerHTML =
+    "<h3>🏆 Ranking de Gastos</h3>";
+
+rankingOrdenado.forEach(
+    ([categoria, valor]) => {
+
+        ranking.innerHTML += `
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                margin-bottom:8px;
+                padding:8px;
+                background:#f8fafc;
+                border-radius:8px;
+            ">
+                <strong>${categoria}</strong>
+
+                <span>
+                    ${valor.toLocaleString(
+                        "pt-BR",
+                        {
+                            style:"currency",
+                            currency:"BRL"
+                        }
+                    )}
+                </span>
+            </div>
+        `;
+    }
+);
     if (gastos.length === 0) {
 
         lista.innerHTML =
