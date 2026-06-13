@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -20,7 +21,66 @@
 <div id="abaResumo">
 
 <div class="card">
+
+<h2>📊 Dashboard Financeiro</h2>
+
+<div class="dashboard-saldo">
+    <span>💰 SALDO DEVEDOR</span>
+    <h1 id="saldoAtual">R$ 0,00</h1>
+</div>
+
+<div class="dashboard-grid">
+
+```
+<div class="dashboard-card positivo">
+    <h4>📉 AMORTIZADO</h4>
+    <p id="totalAmortizado">R$ 0,00</p>
+</div>
+
+<div class="dashboard-card alerta">
+    <h4>💸 GASTOS</h4>
+    <p id="totalGastos">R$ 0,00</p>
+</div>
+
+<div class="dashboard-card perigo">
+    <h4>🎯 QUITADO</h4>
+    <p id="percentualQuitado">0%</p>
+</div>
+
+<div class="dashboard-card">
+    <h4>🏦 AMORTIZAÇÃO REAL</h4>
+    <p id="economiaLiquida">R$ 0,00</p>
+</div>
+```
+
+</div>
+
+<div class="meta-card">
+
+```
+<div class="meta-header">
+    <span>🎯 Meta Mensal</span>
+    <strong id="metaMensal">R$ 1.500,00</strong>
+</div>
+
+<progress
+    id="barraMeta"
+    value="0"
+    max="100">
+</progress>
+
 <p id="percentualMeta">0%</p>
+
+<small>
+    Restante:
+    <span id="restanteMeta">
+        R$ 1.500,00
+    </span>
+</small>
+```
+
+</div>
+
 <hr>
 
 <h3>📈 Evolução dos Gastos</h3>
@@ -28,8 +88,9 @@
 <canvas id="graficoGastos"></canvas>
 
 </div>
+
 </div>
-  
+
 <!-- GASTOS -->
 
 <div id="abaGastos" style="display:none;">
@@ -41,8 +102,9 @@
 <input
 id="saldo"
 type="number"
-  placeholder="Saldo Devedor Atual"
+placeholder="Saldo Devedor Atual"
 readonly>
+
 <input
 id="amortizacao"
 type="number"
@@ -58,7 +120,7 @@ Registrar Amortização
 
 </div>
 
-  <div class="card">
+<div class="card">
 
 <h2>Histórico de Amortizações</h2>
 
@@ -66,7 +128,8 @@ Registrar Amortização
 Nenhuma amortização registrada.
 </div>
 
-  </div>
+</div>
+
 <h2>Registrar Gasto</h2>
 
 <select id="categoria">
@@ -103,18 +166,13 @@ placeholder="Observação">
 <button onclick="registrarGasto()">
 Salvar Gasto
 </button>
-  
+
 <p id="mensagemSucesso"
-style="display:none;
-color:green;
-font-weight:bold;
-margin-top:10px;">
+style="display:none;color:green;font-weight:bold;margin-top:10px;">
 
 ✅ Gasto salvo com sucesso!
 
 </p>
-  
-</div>
 
 </div>
 
@@ -155,6 +213,7 @@ Nenhum gasto registrado.
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script src="script.js"></script>
 
 </body>
