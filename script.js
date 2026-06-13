@@ -132,16 +132,19 @@ function registrarGasto() {
     const observacao =
         document.getElementById("observacao").value;
     
+    const parcelas =
+    Number(
+        document.getElementById("parcelas").value
+    ) || 1;
 
     if (!categoria || !valor) return;
-
-    gastos.push({
-        categoria,
-        valor,
-        observacao,
-        data: new Date().toLocaleDateString("pt-BR")
-    });
-    
+gastos.push({
+    categoria,
+    valor,
+    observacao,
+    parcelas,
+    data: new Date().toLocaleDateString("pt-BR")
+});
     localStorage.setItem(
         "gastos",
         JSON.stringify(gastos)
@@ -229,10 +232,15 @@ gastos
 
             R$ ${gasto.valor.toFixed(2)}<br>
 
-            ${gasto.observacao}<br>
+    ${gasto.observacao}<br>
 
-            <small>${gasto.data}</small>
+${gasto.parcelas > 1
+? `💳 ${gasto.parcelas}x de R$ ${(gasto.valor / gasto.parcelas).toFixed(2)}`
+: ""
+}
+<br>
 
+<small>${gasto.data}</small>
             <br><br>
 
             <button onclick="editarGasto(${indice})">
