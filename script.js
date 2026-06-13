@@ -715,30 +715,7 @@ function salvarMeta() {
         META_MENSAL
     );
 }
-function carregarMeses() {
-
-    const filtro =
-        document.getElementById(
-            "filtroMes"
-        );
-
-    if (!filtro) return;
-
-    filtro.innerHTML =
-        '<option value="todos">Todos os meses</option>';
-
-    const meses = [];
-
-    gastos.forEach(gasto => {
-
-        if (!gasto.data) return;
-
-        const partes =
-            gasto.data.split("/");
-
-        if (partes.length <
-            }
-            
+           
 function atualizarParcelamentos() {
 
     const lista =
