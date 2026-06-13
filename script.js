@@ -311,7 +311,18 @@ function atualizarTela() {
                 currency:"BRL"
             }
         );
-
+document.getElementById(
+    "compromissoMensal"
+).innerHTML =
+    compromissoMensal
+    .toLocaleString(
+        "pt-BR",
+        {
+            style: "currency",
+            currency: "BRL"
+        }
+    );
+    
     document.getElementById(
         "economiaLiquida"
     ).innerHTML =
@@ -364,6 +375,22 @@ function atualizarTela() {
 }
     let grafico = null;
 
+let compromissoMensal = 0;
+
+gastos.forEach(gasto => {
+
+    if (
+        gasto.parcelas &&
+        gasto.parcelas > 1
+    ) {
+
+        compromissoMensal +=
+            gasto.valor /
+            gasto.parcelas;
+
+    }
+
+});
 
 function atualizarGrafico() {
 
