@@ -294,13 +294,27 @@ function atualizarTela() {
         "percentualQuitado"
     ).innerHTML =
         percentualQuitado.toFixed(2) + "%";
+let totalGastos = 0;
 
-    let totalGastos = gastos.reduce(
-        (soma, gasto) =>
-            soma + gasto.valor,
-        0
-    );
+gastos.forEach(gasto => {
 
+    if (
+        gasto.parcelas &&
+        gasto.parcelas > 1
+    ) {
+
+        totalGastos +=
+            gasto.valor /
+            gasto.parcelas;
+
+    } else {
+
+        totalGastos += gasto.valor;
+
+    }
+
+});
+    
     document.getElementById(
         "totalGastos"
     ).innerHTML =
