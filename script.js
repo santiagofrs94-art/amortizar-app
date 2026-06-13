@@ -737,6 +737,8 @@ function carregarMeses() {
             gasto.data.split("/");
 
         if (partes.length <
+            }
+            
 function atualizarParcelamentos() {
 
     const lista =
