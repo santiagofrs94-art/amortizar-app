@@ -152,6 +152,7 @@ gastos.push({
 
 atualizarTela();
 atualizarListaGastos();
+atualizarParcelamentos();
 atualizarGrafico();
 
 const mensagem =
@@ -432,6 +433,7 @@ window.onload = () => {
 atualizarTela();
 atualizarListaGastos();
 atualizarGrafico();
+atualizarParcelamentos();    
 };
 
 function editarGasto(indice) {
@@ -622,4 +624,54 @@ function salvarMeta() {
         "Meta atualizada para R$ " +
         META_MENSAL
     );
+}
+
+function atualizarParcelamentos() {
+
+    const lista =
+        document.getElementById(
+            "listaParcelamentos"
+        );
+
+    if (!lista) return;
+
+    const parcelados =
+        gastos.filter(
+            gasto =>
+                gasto.parcelas &&
+                gasto.parcelas > 1
+        );
+
+    if (parcelados.length === 0) {
+
+        lista.innerHTML =
+            "Nenhum parcelamento ativo.";
+
+        return;
+    }
+
+    lista.innerHTML = "";
+
+    parcelados.forEach(gasto => {
+
+        lista.innerHTML += `
+        <div style="
+            padding:10px;
+            margin-bottom:10px;
+            border:1px solid #ddd;
+            border-radius:10px;
+        ">
+
+            <strong>
+                ${gasto.observacao}
+            </strong>
+
+            <br>
+
+            💳 ${gasto.parcelas}x de
+            R$ ${(gasto.valor / gasto.parcelas).toFixed(2)}
+
+        </div>
+        `;
+    });
 }
