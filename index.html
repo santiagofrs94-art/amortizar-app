@@ -20,24 +20,35 @@
 <div id="abaResumo">
 
 <div class="card">
+<h2>📊 Dashboard Financeiro</h2>
 
-<h2>Resumo Financeiro</h2>
+<div class="dashboard-grid">
 
-<p>Saldo Atual:</p>
-<h3 id="saldoAtual">R$ 0,00</h3>
+    <div class="dashboard-card">
+        <h4>💰 Saldo Atual</h4>
+        <p id="saldoAtual">R$ 0,00</p>
+    </div>
 
-<p>Total Amortizado:</p>
-<h3 id="totalAmortizado">R$ 0,00</h3>
+    <div class="dashboard-card positivo">
+        <h4>📉 Amortizado</h4>
+        <p id="totalAmortizado">R$ 0,00</p>
+    </div>
 
-<p>Total de Gastos:</p>
-<h3 id="totalGastos">R$ 0,00</h3>
+    <div class="dashboard-card alerta">
+        <h4>💸 Gastos</h4>
+        <p id="totalGastos">R$ 0,00</p>
+    </div>
 
-<p>Amortização Real:</p>
+    <div class="dashboard-card perigo">
+        <h4>🎯 Quitado</h4>
+        <p id="percentualQuitado">0%</p>
+    </div>
+
+</div>
+
+<p><strong>Amortização Real</strong></p>
 <h3 id="economiaLiquida">R$ 0,00</h3>
-
-<p>Percentual Quitado:</p>
-<h3 id="percentualQuitado">0%</h3>
-
+  
 <progress
 id="barraQuitacao"
 value="0"
