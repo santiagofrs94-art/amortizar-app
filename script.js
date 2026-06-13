@@ -569,5 +569,29 @@ function editarAmortizacao(indice) {
         JSON.stringify(amortizacoes)
     );
 
+    function salvarMeta() {
+
+    const novaMeta =
+        Number(
+            document.getElementById(
+                "novaMeta"
+            ).value
+        );
+
+    if (!novaMeta) return;
+
+    META_MENSAL = novaMeta;
+
+    localStorage.setItem(
+        "metaMensal",
+        META_MENSAL
+    );
+
+    atualizarTela();
+
+    document.getElementById(
+        "novaMeta"
+    ).value = "";
+}
     atualizarHistoricoAmortizacoes();
 }
