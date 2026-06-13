@@ -423,13 +423,11 @@ function atualizarGrafico() {
 }
 
 window.onload = () => {
-
-```
 atualizarTela();
 atualizarListaGastos();
 atualizarGrafico();
-```
 };
+
 function editarGasto(indice) {
 
     const novoValor = prompt(
