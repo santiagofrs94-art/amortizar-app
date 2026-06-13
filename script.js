@@ -571,15 +571,19 @@ function editarAmortizacao(indice) {
         JSON.stringify(amortizacoes)
     );
 
+    atualizarHistoricoAmortizacoes();
+}
+
     function salvarMeta() {
 
     const novaMeta =
         Number(
-            document.getElementById(
-                "novaMeta"
-            ).value
-        );
-
+      document.getElementById(
+    "novaMeta"
+).value = "";
+    
+alert("Meta atualizada para R$ " + META_MENSAL);
+}
     if (!novaMeta) return;
 
     META_MENSAL = novaMeta;
