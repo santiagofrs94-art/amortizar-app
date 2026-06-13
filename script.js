@@ -283,11 +283,6 @@ function atualizarTela() {
     ).innerHTML =
         percentualQuitado.toFixed(2) + "%";
 
-    document.getElementById(
-        "barraQuitacao"
-    ).value =
-        percentualQuitado;
-
     let totalGastos = gastos.reduce(
         (soma, gasto) =>
             soma + gasto.valor,
