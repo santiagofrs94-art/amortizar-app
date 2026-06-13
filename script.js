@@ -128,14 +128,10 @@ function registrarGasto() {
 
     const valor =
         Number(document.getElementById("valorGasto").value);
+const observacao =
+    document.getElementById("observacao").value;
 
-    const observacao =
-        document.getElementById("observacao").value;
-    document.getElementById(
-    "parcelas"
-).value = "";
-    
-    const parcelas =
+const parcelas =
     Number(
         document.getElementById("parcelas").value
     ) || 1;
