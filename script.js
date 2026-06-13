@@ -131,6 +131,9 @@ function registrarGasto() {
 
     const observacao =
         document.getElementById("observacao").value;
+    document.getElementById(
+    "parcelas"
+).value = "";
     
     const parcelas =
     Number(
@@ -314,7 +317,22 @@ gastos.forEach(gasto => {
     }
 
 });
-    
+let compromissoMensal = 0;
+
+gastos.forEach(gasto => {
+
+    if (
+        gasto.parcelas &&
+        gasto.parcelas > 1
+    ) {
+
+        compromissoMensal +=
+            gasto.valor /
+            gasto.parcelas;
+
+    }
+
+});    
     document.getElementById(
         "totalGastos"
     ).innerHTML =
@@ -388,23 +406,6 @@ document.getElementById(
         Math.min(percentualMeta, 100);
 }
     let grafico = null;
-
-let compromissoMensal = 0;
-
-gastos.forEach(gasto => {
-
-    if (
-        gasto.parcelas &&
-        gasto.parcelas > 1
-    ) {
-
-        compromissoMensal +=
-            gasto.valor /
-            gasto.parcelas;
-
-    }
-
-});
 
 function atualizarGrafico() {
 
