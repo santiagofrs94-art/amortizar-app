@@ -554,6 +554,18 @@ function salvarMeta() {
     atualizarHistoricoAmortizacoes();
 }
 
+function excluirAmortizacao(indice) {
+
+    amortizacoes.splice(indice, 1);
+
+    localStorage.setItem(
+        "amortizacoes",
+        JSON.stringify(amortizacoes)
+    );
+
+    atualizarHistoricoAmortizacoes();
+}
+
 function editarAmortizacao(indice) {
 
     const novoValor = prompt(
@@ -574,16 +586,15 @@ function editarAmortizacao(indice) {
     atualizarHistoricoAmortizacoes();
 }
 
-    function salvarMeta() {
+function salvarMeta() {
 
     const novaMeta =
         Number(
-      document.getElementById(
-    "novaMeta"
-).value = "";
-    
-alert("Meta atualizada para R$ " + META_MENSAL);
-}
+            document.getElementById(
+                "novaMeta"
+            ).value
+        );
+
     if (!novaMeta) return;
 
     META_MENSAL = novaMeta;
@@ -598,6 +609,9 @@ alert("Meta atualizada para R$ " + META_MENSAL);
     document.getElementById(
         "novaMeta"
     ).value = "";
-}
-    atualizarHistoricoAmortizacoes();
+
+    alert(
+        "Meta atualizada para R$ " +
+        META_MENSAL
+    );
 }
