@@ -7,7 +7,10 @@ let amortizacoes =
 JSON.parse(
 localStorage.getItem("amortizacoes")
 ) || [];
-const META_MENSAL = 1500;
+let META_MENSAL =
+Number(
+    localStorage.getItem("metaMensal")
+) || 1500;
 
 // ===== ABAS =====
 
