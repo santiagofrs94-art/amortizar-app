@@ -530,6 +530,8 @@ function salvarMeta() {
 
     META_MENSAL = novaMeta;
 
+    alert("Nova meta: " + META_MENSAL);
+
     localStorage.setItem(
         "metaMensal",
         META_MENSAL
