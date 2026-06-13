@@ -106,7 +106,7 @@ function reiniciarFinanciamento() {
     }
 
     localStorage.clear();
-
+META_MENSAL = 1500;
     saldo = 0;
     saldoInicial = 0;
     totalAmortizado = 0;
@@ -517,7 +517,31 @@ function atualizarHistoricoAmortizacoes() {
 
 
 function excluirAmortizacao(indice) {
+function salvarMeta() {
 
+    const novaMeta =
+        Number(
+            document.getElementById(
+                "novaMeta"
+            ).value
+        );
+
+    if (!novaMeta) return;
+
+    META_MENSAL = novaMeta;
+
+    localStorage.setItem(
+        "metaMensal",
+        META_MENSAL
+    );
+
+    atualizarTela();
+
+    document.getElementById(
+        "novaMeta"
+    ).value = "";
+}
+    
     amortizacoes.splice(indice, 1);
 
     localStorage.setItem(
