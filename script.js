@@ -471,7 +471,7 @@ function atualizarGrafico() {
 
     gastos.forEach((gasto) => {
 
-        acumulado += gasto.valor;
+        acumulado += Number(gasto.valor);
 
         labels.push(
             gasto.data
