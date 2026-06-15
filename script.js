@@ -457,6 +457,9 @@ document.getElementById(
 
 function atualizarGrafico() {
 
+    console.log("Grafico iniciado");
+console.log(gastos);
+
     const canvas =
         document.getElementById(
             "graficoGastos"
