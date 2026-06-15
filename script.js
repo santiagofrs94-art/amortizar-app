@@ -614,8 +614,6 @@ function atualizarHistoricoAmortizacoes() {
 `;
         });}
 
-}
-
 function salvarMeta() {
 
     const novaMeta =
