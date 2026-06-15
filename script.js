@@ -612,42 +612,8 @@ function atualizarHistoricoAmortizacoes() {
     </button>
 </div>
 `;
-        });
-}
+        });}
 
-    atualizarHistoricoAmortizacoes();
-}
-
-function excluirAmortizacao(indice) {
-
-    amortizacoes.splice(indice, 1);
-
-    localStorage.setItem(
-        "amortizacoes",
-        JSON.stringify(amortizacoes)
-    );
-
-    atualizarHistoricoAmortizacoes();
-}
-
-function editarAmortizacao(indice) {
-
-    const novoValor = prompt(
-        "Novo valor da amortização:",
-        amortizacoes[indice].valor
-    );
-
-    if (novoValor === null) return;
-
-    amortizacoes[indice].valor =
-        Number(novoValor);
-
-    localStorage.setItem(
-        "amortizacoes",
-        JSON.stringify(amortizacoes)
-    );
-
-    atualizarHistoricoAmortizacoes();
 }
 
 function salvarMeta() {
