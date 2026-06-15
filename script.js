@@ -477,9 +477,9 @@ function atualizarGrafico() {
             gasto.data
         );
 
-        valores.push(
-            acumulado
-        );
+     valores.push(
+    Number(acumulado)
+);
     });
 
     if (grafico) {
