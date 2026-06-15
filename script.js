@@ -615,42 +615,6 @@ function atualizarHistoricoAmortizacoes() {
         });
 }
 
-
-function excluirAmortizacao(indice) {
-function salvarMeta() {
-
-    const novaMeta =
-        Number(
-            document.getElementById(
-                "novaMeta"
-            ).value
-        );
-
-    if (!novaMeta) return;
-
-    META_MENSAL = novaMeta;
-
-    alert("Nova meta: " + META_MENSAL);
-
-    localStorage.setItem(
-        "metaMensal",
-        META_MENSAL
-    );
-
-    atualizarTela();
-
-    document.getElementById(
-        "novaMeta"
-    ).value = "";
-}
-    
-    amortizacoes.splice(indice, 1);
-
-    localStorage.setItem(
-        "amortizacoes",
-        JSON.stringify(amortizacoes)
-    );
-
     atualizarHistoricoAmortizacoes();
 }
 
